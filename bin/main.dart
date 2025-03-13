@@ -21,7 +21,8 @@ void main() {
         addToCart(mall);   
       case '3':
         // 필수3 - 장바구니에 담은 상품들의 총 가격을 볼 수 있는 기능
-        print('장바구니에 ${mall.showTotal()}원 어치를 담으셨네요 ');
+        // 도전3 -  장바구니에 담은 상품들의 목록과 가격을 볼 수 있는 기능
+        print('장바구니에 ${mall.showBucketProductNames()}가 담겨있네요. 총 ${mall.showTotal()}원 입니다!');
       case '4':
         // 필수4 - 쇼핑몰 프로그램을 종료할 수 있는 기능
         print('정말 종료하시겠습니까? [5]를 입력하시면 종료됩니다.');

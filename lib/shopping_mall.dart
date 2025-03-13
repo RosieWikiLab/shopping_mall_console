@@ -11,6 +11,7 @@ class ShoppingMall {
   ];
 
   int totalPrice = 0;
+  List<String> bucketProducts = [];
   
   // ShoppingMall({required this.stores, required this.totalPrice});
 
@@ -26,9 +27,19 @@ class ShoppingMall {
 
   void addToCart(String? name, int? count) {
     totalPrice += stores.firstWhere((element) => element.name == name).price * count!;
+    bucketProducts.add(name!);
+  }
+
+  String showBucketProductNames() {
+    return bucketProducts.join(", ");
   }
 
   int showTotal() {
     return totalPrice;
+  }
+
+  void resetBucket() {
+    totalPrice = 0;
+    bucketProducts.clear();
   }
 }
