@@ -80,8 +80,8 @@ void addToCart(ShoppingMall mall) {
     return;
   }
 
-  if(!mall.checkProductCount(count)) {
-    print('현재 제품 재고 수량이 부족합니다 !');
+  if(!mall.checkProductCount(name, count)) {
+    print('현재 제품 재고 수량이 부족합니다 ! (재고수량 >= 장바구니 수량 + 추가 수량) 이어야 합니다.');
     return;
   }
 

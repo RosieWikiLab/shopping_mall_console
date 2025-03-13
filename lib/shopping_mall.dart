@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:console_shoppingmaill/product.dart';
 
 class ShoppingMall {
@@ -17,7 +19,7 @@ class ShoppingMall {
 
   void showProducts() {
     for(var product in stores) {
-      print('${product.name} / ${product.price}원');
+      print('${product.name} / 개당 ${product.price}원 / 재고 ${product.count}개');
     }
   }
 
@@ -25,8 +27,10 @@ class ShoppingMall {
     return stores.any((element) => element.name == name);
   }
 
-  bool checkProductCount(int? count) {
-    return stores.any((element) => element.count >= count!);
+  bool checkProductCount(String? name, int? count) {
+    int storedCount = stores.firstWhere((product) => product.name == name).count;
+    int bucketCount = bucketProducts[name] ?? 0;
+    return storedCount >= (count!+bucketCount);
   }
 
   void addToCart(String? name, int? count) {
