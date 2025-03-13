@@ -39,6 +39,7 @@ void main() {
         if(mall.showTotal() == 0) {
           print('이미 장바구니가 비어있습니다.');
         } else {
+          mall.resetBucket();
           print('장바구니를 초기화합니다.');
         }
       case '7':
