@@ -28,7 +28,7 @@ class ShoppingMall {
     totalPrice += stores.firstWhere((element) => element.name == name).price * count!;
   }
 
-  void showTotal() {
-    
+  int showTotal() {
+    return totalPrice;
   }
 }

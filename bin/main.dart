@@ -19,6 +19,9 @@ void main() {
       case '2':
         // 필수2 - 상품을 장바구니에 담는 메서드
         addToCart(mall);   
+      case '3':
+        // 필수3 - 장바구니에 담은 상품들의 총 가격을 볼 수 있는 기능
+        print('장바구니에 ${mall.showTotal()}원 어치를 담으셨네요 ');
     }
   } while (number != '5');
 }
