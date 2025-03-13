@@ -11,7 +11,7 @@ class ShoppingMall {
   ];
 
   int totalPrice = 0;
-  List<String> bucketProducts = [];
+  Map<String, int> bucketProducts = {}; // 장바구니 상품, 수량
   
   // ShoppingMall({required this.stores, required this.totalPrice});
 
@@ -25,13 +25,17 @@ class ShoppingMall {
     return stores.any((element) => element.name == name);
   }
 
+  bool checkProductCount(int? count) {
+    return stores.any((element) => element.count >= count!);
+  }
+
   void addToCart(String? name, int? count) {
+    bucketProducts.update(name!, (x) => x + count!, ifAbsent: () => count!);
     totalPrice += stores.firstWhere((element) => element.name == name).price * count!;
-    bucketProducts.add(name!);
   }
 
   String showBucketProductNames() {
-    return bucketProducts.join(", ");
+    return bucketProducts.keys.toString();
   }
 
   int showTotal() {
@@ -41,5 +45,13 @@ class ShoppingMall {
   void resetBucket() {
     totalPrice = 0;
     bucketProducts.clear();
+  }
+
+  void stockManage() {
+    for(var product in stores) {
+      if(bucketProducts.containsKey(product.name)) {
+        product.count -= bucketProducts[product.name]!;
+      }
+    }
   }
 }
