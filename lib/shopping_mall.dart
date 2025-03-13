@@ -20,8 +20,12 @@ class ShoppingMall {
     }
   }
 
-  void addToCart() {
-    
+  bool checkProduct(String? name) {
+    return stores.any((element) => element.name == name);
+  }
+
+  void addToCart(String? name, int? count) {
+    totalPrice += stores.firstWhere((element) => element.name == name).price * count!;
   }
 
   void showTotal() {
